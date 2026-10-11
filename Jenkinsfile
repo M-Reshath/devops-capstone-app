@@ -46,7 +46,7 @@ pipeline {
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'ec2-ssh-key', keyFileVariable: 'EC2_KEY')]) {
                     sh '''
-                    ssh -i "$EC2_KEY" -o StrictHostKeyChecking=no ubuntu@$EC2_HOST "
+                    ssh -i /home/joker/.ssh/capstone-key.pem -o StrictHostKeyChecking=no ubuntu@$EC2_HOST "
                       sudo docker pull $IMAGE_NAME:latest &&
                       (sudo docker rm -f capstone-app || true) &&
                       sudo docker run -d --restart unless-stopped -p 3000:3000 --name capstone-app $IMAGE_NAME:latest &&
