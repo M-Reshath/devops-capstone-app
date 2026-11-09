@@ -8,7 +8,7 @@ pipeline {
     environment {
         IMAGE_NAME = 'reshath/capstone-app'
         DOCKERHUB_CREDS = credentials('dockerhub-creds')
-        EC2_HOST = '13.127.199.251'
+        EC2_HOST = '13.201.131.125'
     }
 
     stages {
@@ -64,7 +64,7 @@ pipeline {
             sh 'docker logout || true'
         }
         success {
-            echo 'Pipeline finished successfully. App is live at http://13.127.199.251:3000'
+            echo 'Pipeline finished successfully. App is live at http://13.201.131.125:3000'
         }
     }
 }
